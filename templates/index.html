@@ -1,0 +1,19 @@
+{{define "content"}}
+    <h2>{{.T "home.title"}}</h2>
+    {{if not .Shows}}
+        <p>{{.T "home.empty"}}</p>
+    {{else}}
+        <div class="shows-grid">
+            {{range .Shows}}
+                <a href="/show?name={{.Name}}" class="show-card">
+                    {{if .PosterURL}}
+                        <div class="show-poster" style="background-image: url('{{.PosterURL}}');"></div>
+                    {{else}}
+                        <div class="show-poster" style="display:flex;align-items:center;justify-content:center;color:#666;">{{$.T "home.no_cover"}}</div>
+                    {{end}}
+                    <div class="show-title">{{.Name}}</div>
+                </a>
+            {{end}}
+        </div>
+    {{end}}
+{{end}}

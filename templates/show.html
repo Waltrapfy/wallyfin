@@ -1,0 +1,33 @@
+{{define "content"}}
+    <a href="/" style="display:inline-block; margin-bottom: 1rem; color: #aaa;">&larr; {{.T "show.back"}}</a>
+    
+    <div class="metadata-placeholder">
+        {{if .ShowDetail.PosterURL}}
+            <div class="cover-placeholder" style="background-image: url('{{.ShowDetail.PosterURL}}'); border: none;"></div>
+        {{else}}
+            <div class="cover-placeholder">{{.T "show.no_cover"}}</div>
+        {{end}}
+        
+        <div class="info-placeholder">
+            <h1 style="margin-top: 0;">{{.ShowDetail.Name}}</h1>
+            {{if .ShowDetail.Overview}}
+                <p style="line-height: 1.6; color: #ccc;">{{.ShowDetail.Overview}}</p>
+            {{else}}
+                <p>{{.T "show.no_overview"}}</p>
+            {{end}}
+        </div>
+    </div>
+
+    {{range .ShowDetail.Seasons}}
+        <h2 class="season-title">{{.Name}}</h2>
+        {{range .Episodes}}
+            <div class="episode-item">
+                <div>
+                    <span>{{.Name}}</span>
+                    {{if .IsWatched}}<span class="watched-badge">✔ {{$.T "show.watched"}}</span>{{end}}
+                </div>
+                <a href="/play?file={{.PlayPath}}" class="play-btn">▶ {{$.T "show.play"}}</a>
+            </div>
+        {{end}}
+    {{end}}
+{{end}}

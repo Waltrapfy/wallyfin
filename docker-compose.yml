@@ -1,0 +1,16 @@
+services:
+  wallyfin:
+    build: .
+    container_name: wallyfin
+    ports:
+      - "8088:8088"
+    environment:
+      - WALLYFIN_MEDIA_ROOT=/media
+      - WALLYFIN_PORT=8088
+      - WALLYFIN_DATA_DIR=/app/data
+      - WALLYFIN_ADMIN_USER=admin
+      - WALLYFIN_ADMIN_PASSWORD=admin
+    volumes:
+      - /mnt/storage/jellyfin/media/serien:/media
+      - ./data:/app/data
+    restart: unless-stopped

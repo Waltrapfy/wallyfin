@@ -1,0 +1,10 @@
+{{define "content"}}
+    <a href="javascript:history.back()" style="display:inline-block; margin-bottom: 1rem; color:#aaa;">&larr; {{.T "play.back"}}</a>
+
+    <div class="player-wrap">
+        <video controls autoplay playsinline webkit-playsinline>
+            <source src="/media/{{.PlayPath}}">
+            {{.T "play.unsupported"}}
+        </video>
+    </div>
+{{end}}

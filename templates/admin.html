@@ -1,0 +1,45 @@
+{{define "content"}}
+    <h2>{{.T "admin.title"}}</h2>
+
+    <div class="card" style="max-width: 520px; margin-bottom: 2rem;">
+        <h3>{{.T "admin.settings"}}</h3>
+        <form method="POST" action="/admin/settings">
+            <div class="form-group">
+                <label>{{.T "admin.language"}}</label>
+                <select name="language">
+                    <option value="de" {{if eq .Language "de"}}selected{{end}}>Deutsch</option>
+                    <option value="en" {{if eq .Language "en"}}selected{{end}}>English</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>{{.T "admin.tmdb_key"}}</label>
+                <input type="text" name="tmdb_key" value="{{.TMDBKey}}" placeholder="{{.T "admin.tmdb_placeholder"}}">
+            </div>
+            <p style="color:#aaa; font-size:0.9rem;">{{.T "admin.tmdb_help"}}</p>
+            <button type="submit">{{.T "admin.save_settings"}}</button>
+        </form>
+    </div>
+    
+    <div class="card" style="max-width: 520px; margin-bottom: 2rem;">
+        <h3>{{.T "admin.create_user"}}</h3>
+        <form method="POST" action="/admin">
+            <div class="form-group">
+                <label>{{.T "login.username"}}</label>
+                <input type="text" name="username" required>
+            </div>
+            <div class="form-group">
+                <label>{{.T "login.password"}}</label>
+                <input type="password" name="password" required minlength="4">
+            </div>
+            <button type="submit">{{.T "admin.create_user_btn"}}</button>
+        </form>
+    </div>
+
+    <h3>{{.T "admin.users"}}</h3>
+    {{range .AllUsers}}
+        <div class="card" style="padding: 1rem; max-width: 520px;">
+            <strong>{{.Username}}</strong>
+            {{if .IsAdmin}}<span style="color:#00a4dc;">({{$.T "admin.role_admin"}})</span>{{end}}
+        </div>
+    {{end}}
+{{end}}

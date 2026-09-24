@@ -1,0 +1,26 @@
+# Go Binaries & Build-Dateien
+wallyfin
+*.exe
+*.exe.manifest
+*.dll
+*.so
+*.dylib
+dist/
+
+# Datenbank & Runtime-Daten (NIEMALS auf GitHub pushen!)
+data/
+*.db
+*.db-journal
+*.db-wal
+
+# Lokale Konfigurationen / Passwörter
+.env
+
+# Betriebssystem-Dateien
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
