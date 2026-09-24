@@ -99,7 +99,8 @@ WALLYFIN_PORT	8088	HTTP port
 WALLYFIN_DATA_DIR	./data	SQLite + app data
 WALLYFIN_ADMIN_USER	admin	Initial admin username
 WALLYFIN_ADMIN_PASSWORD	admin	Initial admin password
-Metadata```
+Metadata
+```
 
 Wallyfin can automatically fetch:
 
